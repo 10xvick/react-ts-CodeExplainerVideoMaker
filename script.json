@@ -1,0 +1,29 @@
+{
+  "steps": [
+    {
+      "step": 1,
+      "description": "Import React and the `useState` and `useEffect` hooks from the React library.",
+      "code": "import React, { useState, useEffect } from 'react';"
+    },
+    {
+      "step": 2,
+      "description": "Define the `Timer` component as a functional component that uses the `useState` hook to store the current number of seconds (`seconds`) and the status of the timer (`isActive`).",
+      "code": "const Timer = () => {\n  const [seconds, setSeconds] = useState(0);\n  const [isActive, setIsActive] = useState(false);"
+    },
+    {
+      "step": 3,
+      "description": "Use the `useEffect` hook to manage the timer's behavior. The hook checks if the timer is active, and if so, starts the interval that increases the `seconds` state by 1 every second. If the timer is inactive, it clears the interval. The hook also returns a cleanup function that clears the interval when the component unmounts.",
+      "code": "  useEffect(() => {\n    let interval = null;\n    if (isActive) {\n      interval = setInterval(() => setSeconds(s => s + 1), 1000);\n    } else {\n      clearInterval(interval);\n    }\n    return () => clearInterval(interval);\n  }, [isActive]);"
+    },
+    {
+      "step": 4,
+      "description": "Return the component's JSX. The component displays the current number of seconds and three buttons: Start, Pause, and Reset. The `Start` button sets `isActive` to `true`, the `Pause` button sets `isActive` to `false`, and the `Reset` button sets `seconds` to `0`.",
+      "code": "  return (\n    <div>\n      {seconds}s\n      <button onClick={() => setIsActive(true)}>Start</button>\n      <button onClick={() => setIsActive(false)}>Pause</button>\n      <button onClick={() => setSeconds(0)}>Reset</button>\n    </div>\n  );\n};"
+    },
+    {
+      "step": 5,
+      "description": "Finally, export the `Timer` component as the default export.",
+      "code": "export default Timer;"
+    }
+  ]
+}
