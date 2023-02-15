@@ -2,7 +2,7 @@ import * as React from 'react';
 import './style.css';
 import CodeWindow from './Code/CodeWindow';
 import GlobalContext, { GlobalReducer, Store } from './StateManager/Context';
-import { Text2Speech } from './Speech/Speech';
+import { getword, Text2Speech } from './Speech/Speech';
 
 export default function App() {
   const [state, dispatch] = React.useReducer(GlobalReducer, Store);
@@ -26,12 +26,7 @@ const Main = () => {
 
   React.useEffect(() => {
     const next = () => setTimeout(() => dispatch({ type: 'nextStep' }), 500);
-    const update = (e) => {
-      const i = e.charIndex;
-      console.log('x',speech[i]);
-
-    };
-    Text2Speech(speech, next, update);
+    Text2Speech(speech, next, setText);
   }, [step]);
 
   return (
