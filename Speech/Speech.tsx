@@ -1,9 +1,11 @@
 const synth = window.speechSynthesis;
 
 export const Text2Speech = (text,next,update)=>{
+    update('');
+    console.log('x')
     const utt = new SpeechSynthesisUtterance(text)
     utt.onend = next;
-    utt.onboundary = e=>update(getword(e.target.text,e.charIndex,e.charLength));
+    utt.onboundary = e=>update(x=>x+' '+getword(e.target.text,e.charIndex,e.charLength));
 
     synth.cancel();
     synth.speak(utt);

@@ -11,7 +11,7 @@ export const Store = {
 const GlobalContext = React.createContext(Store);
 
 export const GlobalReducer = (state, { type, payload }) => {
-  const steps = []
+  //const steps = []
   switch (type) {
     case 'nextStep': {
       const next = steps[state.step];

@@ -25,14 +25,15 @@ const Main = () => {
   const [text,setText] = React.useState('');
 
   React.useEffect(() => {
-    const next = () => setTimeout(() => dispatch({ type: 'nextStep' }), 500);
+    const next = () => setTimeout(() => {dispatch({ type: 'nextStep' });
+    }, 500);  
     Text2Speech(speech, next, setText);
   }, [step]);
 
   return (
     <React.Fragment>
-      {text}
       <CodeWindow code={code} />
+      {text}
     </React.Fragment>
   );
 };
