@@ -2,6 +2,8 @@ import React = require('react');
 
 import { steps } from '../script';
 
+const stepsx = steps.slice(0,2);
+
 export const Store = {
   step: 0,
   code: '',
@@ -11,6 +13,7 @@ export const Store = {
 const GlobalContext = React.createContext(Store);
 
 export const GlobalReducer = (state, { type, payload }) => {
+  const steps = stepsx;
   switch (type) {
     case 'nextStep': {
       const next = steps[state.step];

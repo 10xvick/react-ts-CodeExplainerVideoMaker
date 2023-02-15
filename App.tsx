@@ -22,17 +22,21 @@ const Main = () => {
     dispatch,
   } = React.useContext<any>(GlobalContext);
 
+  const [text,setText] = React.useState('');
+
   React.useEffect(() => {
     const next = () => setTimeout(() => dispatch({ type: 'nextStep' }), 500);
-    const update = () => {
-      console.log('x');
+    const update = (e) => {
+      const i = e.charIndex;
+      console.log('x',speech[i]);
+
     };
     Text2Speech(speech, next, update);
   }, [step]);
 
   return (
     <React.Fragment>
-      {speech}
+      {text}
       <CodeWindow code={code} />
     </React.Fragment>
   );

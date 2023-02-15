@@ -1,10 +1,9 @@
 const synth = window.speechSynthesis;
 
-export const Text2Speech = (text,callback)=>{
+export const Text2Speech = (text,next,update)=>{
     const utt = new SpeechSynthesisUtterance(text)
-    utt.addEventListener('end',()=>{
-      callback();
-    });
+    utt.onend = next;
+    utt.onboundary = update;
     synth.cancel();
     synth.speak(utt);
 }
