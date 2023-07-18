@@ -38,7 +38,7 @@ const Main = () => {
 
     return () => {
       clearTimeout(timeout);
-      speeker.pause();
+      speeker.cancel();
     };
   }, [step]);
 
