@@ -11,7 +11,10 @@ export default function App() {
     <div>
       <GlobalContext.Provider value={{ state: state, dispatch: dispatch }}>
         <div onClick={() => setStart((e) => !e)}>
-          {start ? <Main /> : <> click to start </>}
+          {start ? <Main /> : <div>
+            <button> click to start </button>
+            <button onClick={()=>dispatch({type:'reset'})}> resset </button>
+          </div>}  
         </div>
       </GlobalContext.Provider>
     </div>

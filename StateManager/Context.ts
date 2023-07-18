@@ -2,15 +2,17 @@ import React = require('react');
 
 import { steps } from '../script';
 
-export const Store = {
+const initialstate = {
   step: 0,
   code: '',
   speech: '3,2,1',
 };
 
+export const Store = initialstate;
+
 const GlobalContext = React.createContext(Store);
 
-export const GlobalReducer = (state, { type, payload }) => {
+export const GlobalReducer = (state, { type }) => {
   switch (type) {
     case 'nextStep': {
       const next = steps[state.step];
@@ -27,6 +29,11 @@ export const GlobalReducer = (state, { type, payload }) => {
           code: steps.map((e) => e.code).join('\n\n'),
           speech: `the final code should look like this`,
         };
+      break;
+    }
+    case 'reset': {
+      return initialstate;
+      break;
     }
   }
   return state;
