@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as Prism from './Prism/prism';
 import '../style.css';
 import './Prism/prism.css';
-import GlobalContext from '../StateManager/Context';
 
 export default function CodeWindow({code}) {
 
