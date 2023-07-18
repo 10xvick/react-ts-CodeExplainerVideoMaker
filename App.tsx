@@ -27,7 +27,9 @@ const Main = () => {
     dispatch,
   } = React.useContext<any>(GlobalContext);
 
+
   const [text, setText] = React.useState('');
+  const [speeker,setspeeker] = React.useState();
 
   React.useEffect(() => {
     let timeout;
@@ -38,12 +40,19 @@ const Main = () => {
     };
 
     const speeker = Text2Speech(speech, next, setText);
+    setspeeker(speeker);
 
     return () => {
       clearTimeout(timeout);
-      speeker.cancel();
+      speeker?.cancel();
     };
   }, [step]);
+
+  React.useEffect(()=>()=>{
+      speeker?.cancel();
+      console.log('sp',speeker);
+    }
+  ,[])
 
   return (
     <React.Fragment>
