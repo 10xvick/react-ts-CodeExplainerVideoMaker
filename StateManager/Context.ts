@@ -29,11 +29,9 @@ export const GlobalReducer = (state, { type }) => {
           code: steps.map((e) => e.code).join('\n\n'),
           speech: `the final code should look like this`,
         };
-      break;
     }
     case 'reset': {
       return initialstate;
-      break;
     }
   }
   return state;
