@@ -1,3 +1,3 @@
 # react-ts-CodeExplainerVideoMaker
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-ts-nqhziu)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-ts-code-explainer)
