@@ -10,7 +10,9 @@ export default function App() {
   return (
     <div>
       <GlobalContext.Provider value={{ state: state, dispatch: dispatch }}>
-        <div onClick={() => setStart((e) => !e)}>{start && <Main />}</div>
+        <div onClick={() => setStart((e) => !e)}>
+          {start ? <Main /> : <> click to start </>}
+        </div>
       </GlobalContext.Provider>
     </div>
   );
@@ -25,11 +27,19 @@ const Main = () => {
   const [text, setText] = React.useState('');
 
   React.useEffect(() => {
-    const next = () =>
-      setTimeout(() => {
+    let timeout;
+    const next = () => {
+      timeout = setTimeout(() => {
         dispatch({ type: 'nextStep' });
       }, 500);
-    Text2Speech(speech, next, setText);
+    };
+
+    const speeker = Text2Speech(speech, next, setText);
+
+    return () => {
+      clearTimeout(timeout);
+      speeker.pause();
+    };
   }, [step]);
 
   return (

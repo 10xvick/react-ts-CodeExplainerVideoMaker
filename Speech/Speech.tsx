@@ -12,6 +12,8 @@ export const Text2Speech = (text, next, update) => {
 
   synth.cancel();
   synth.speak(utt);
+  
+  return synth;
 };
 
 export const getword = (text, from, to) => {
